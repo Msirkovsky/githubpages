@@ -3,7 +3,7 @@
 ## Základní info 
 
 Vývojové nástroje:
-- PostgreSQL -[PG Admin](https://www.pgadmin.org)
+- PostgreSQL - [PG Admin](https://www.pgadmin.org)
 - Oracle - [SQL Developer](https://www.oracle.com/database/technologies/appdev/sql-developer.html)
 - [Dbeaver](https://dbeaver.io/) - imho lepší jak oficiální klienti
 
@@ -17,11 +17,11 @@ Vývojové nástroje:
 
 [MS SQL vs Oracle](https://db-engines.com/en/system/Microsoft+SQL+Server%3BOracle)
 
-Typy v Oracle:
-https://docs.oracle.com/cd/B28359_01/server.111/b28318/datatype.htm#CNCPT213
+[Typy v Oracle](
+https://docs.oracle.com/cd/B28359_01/server.111/b28318/datatype.htm#CNCPT213)
 
-Typy v PostgreSQL
-https://www.postgresql.org/docs/current/static/datatype.html
+[Typy v PostgreSQL](
+https://www.postgresql.org/docs/current/static/datatype.html)
 
 Největší problém UUID a boolean pro Oracle.
 
@@ -56,7 +56,8 @@ Oracle
 select '1' as cislo from dual
 ```
 
-dual je tabulka v paměti, která se na to "zneužívá"
+dual je tabulka v paměti, která se na to "zneužívá".
+Nepříjemná věc, kde hrozí, že spoustu jednoduchých selektů(které by byly přenositelné) se budou muset psát specificky pro Oracle a pro MSSQL/PostgreSQL.
 
 ### Varchar(max)
 
@@ -67,13 +68,13 @@ Vyhýbat se `clob`(Oraclí alternativa k `varchar(max)`). Nelze filtrovat podle 
 - varchar(MAX) -> varchar2(4000)
 - nvarchar(MAX) -> nvarchar2(2000)
 
-varchar2 je alias pro varchar. Doporučuje se používat varchar2 - varchar se v budoucnu může změnit.
+`varchar2` je alias pro `varchar`. Doporučuje se používat `varchar2` - `varchar` se v budoucnu může změnit.
 
 **Postgre**
 - varchar(MAX) -> varchar/text
 - nvarchar(MAX) -> varchar/text
 
-`Varchar` má omezení na **1GB**. `Text` žádné
+`varchar` má omezení na **1GB**. `Text` žádné. U obou fungují filtry.
 
 
 ### Newid()
@@ -85,7 +86,7 @@ select sys_guid() as s from dual
 
 Postgre: 
 ```SQL
-select uuid_generate_v4()`
+select uuid_generate_v4()
 ```
 
 Pozn. pro Oracle, pokud to někdy nepůjde, je nutné jednorázově zavolat:
@@ -160,7 +161,7 @@ Pozn. Podle toho lze měnit selekty v kódu.  Ukázka použití je v:
 AnalytickyKomentarRepository.GetAnalytickyKomentarInfoSelect
 ```
 
-Převod GUID do Oracle (pomocná extension metoda ToOracleUUID())
+### Převod GUID do Oracle (pomocná extension metoda ToOracleUUID())
 
 Příklad:
 ```csharp 
